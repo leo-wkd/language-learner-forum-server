@@ -23,9 +23,9 @@ const createPostCtrl = expressAsyncHandler(async (req, res) => {
         });
         throw new Error('Creating failed because it contains profane words and you have been labelled as Dangerous User');
     }
-    const directoryName = path. basename(__dirname);
-    console.log(directoryName);
-    const localPath = `./public/images/posts/${req?.file?.filename}`;
+    //const directoryName = path. basename(__dirname);
+    //console.log(directoryName);
+    const localPath = `public/images/posts/${req?.file?.filename}`;
     const fileName = req?.file?.filename;
     // 2 upload to S3 and get url
     const imgUploaded = await s3.s3UploadPostImg(fileName, localPath);
