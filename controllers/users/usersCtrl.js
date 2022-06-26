@@ -257,7 +257,7 @@ const generateVerificationTokenCtrl = expressAsyncHandler(async (req, res) => {
         // build msg and send email 
         // console.log(verificationToken);
         const resetURL = `If you were requested to verify your account, verify now within 10 minutes, \
-                            otherwise ignore this message. <a href="http://localhost:3000/verify-account/${verificationToken}">Click to verify your account</a>`;
+                            otherwise ignore this message. <a href="https://blog-app-kaiduo.netlify.app/verify-account/${verificationToken}">Click to verify your account</a>`;
         const msg = {
             from: "leo97wang@gmail.com", // Sender email
             to: user.email, // Receiver email
@@ -308,7 +308,7 @@ const forgetPasswordTokenCtrl = expressAsyncHandler(async (req, res) => {
         // build msg and send by email
         
         const resetURL = `If you were requested to reset your password, reset now within 10 minutes, \
-                            otherwise ignore this message. <a href="http://localhost:3000/reset-password/${token}">Click to reset your password</a>`;
+                            otherwise ignore this message. <a href="https://blog-app-kaiduo.netlify.app/reset-password/${token}">Click to reset your password</a>`;
         const msg = {
             from: "leo97wang@gmail.com", // Sender email
             to: email, // Receiver email
