@@ -1,7 +1,7 @@
 const expressAsyncHandler = require('express-async-handler');
 const badFilter = require('bad-words');
 const fs = require('fs');
-
+const path = require('path');
 const Post = require('../../model/post/post');
 const User = require('../../model/user/user'); //一定注意！这个地方路径里的U是大写，直接把User类import过来
 const validateMongodbId = require("../../utils/validateMongodbID");
@@ -23,8 +23,9 @@ const createPostCtrl = expressAsyncHandler(async (req, res) => {
         });
         throw new Error('Creating failed because it contains profane words and you have been labelled as Dangerous User');
     }
-
-    const localPath = `public/images/posts/${req?.file?.filename}`;
+    const directoryName = path. basename(__dirname);
+    console.log(directoryName);
+    const localPath = `./public/images/posts/${req?.file?.filename}`;
     const fileName = req?.file?.filename;
     // 2 upload to S3 and get url
     const imgUploaded = await s3.s3UploadPostImg(fileName, localPath);
